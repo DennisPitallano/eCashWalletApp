@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eCashWalletApp.MainPage" Shell.NavBarIsVisible="false"
+             xmlns:viewmodel="clr-namespace:eCashWalletApp.ViewModels" 
+             x:DataType="viewmodel:MainViewModel">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+            <Image x:Name="ImgCashTabLogo"
+                Source="cashtab.png"
+                SemanticProperties.Description="Cash Tab"
+                HeightRequest="45"
+                HorizontalOptions="Center" />
+
+            <Border WidthRequest="100" HeightRequest="100"
+                    Stroke="{AppThemeBinding Light={StaticResource WhiteBrush}}"
+                    StrokeShape="RoundRectangle 50" StrokeThickness="2">
+                <Image
+                    Source="pita.png"
+                    HeightRequest="98" WidthRequest="98" />
+            </Border>
+            <Label Text="ORA******" TextColor="White" FontFamily="PoppinsBold"
+                   FontSize="20" HorizontalOptions="Center" />
+            <!--<Label
+                Text="Welcome to Cashtab!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" BackgroundColor="Transparent" TextColor="White" />
+            <Label
+                Text="Cashtab is an open source, non-custodial wallet for eCash."
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Cashtab is an open source, non-custodial wallet for eCash"
+                FontSize="18"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                TextColor="White" />-->
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button
+                    x:Name="CounterBtn"
+                    Text="QUICK BALANCE"
+                    SemanticProperties.Hint="Counts the number of times you click"
+                    Clicked="OnCounterClicked"
+                    HorizontalOptions="Center" >
+                    <Button.Shadow>
+                        <Shadow Brush="White"
+                                Offset="4,4"
+                                Opacity=".10"></Shadow>
+                    </Button.Shadow>
+                </Button>
+                <Button
+                        x:Name="UsePin"
+                        Text="USE PASSWORD"
+                        SemanticProperties.Hint=""
+                        BackgroundColor="{AppThemeBinding Light={StaticResource Tertiary}}"
+                        HorizontalOptions="Center" Grid.Row="0" Grid.Column="1"
+                        BorderColor="Gray" BorderWidth="1"
+                        Command="{Binding LogInCommand}">
+                    <Button.Shadow>
+                        <Shadow Brush="White"
+                                Offset="4,4"
+                                Radius="15"
+                                Opacity=".10"></Shadow>
+                    </Button.Shadow>
+                </Button>
+                <Image
+                    Source="fingerprint.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    HeightRequest="75"
+                    HorizontalOptions="Center" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="50" />
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Login with Fingerprint"
+                       TextColor="White"
+                       HorizontalOptions="Center"></Label>
+            </Grid>
+         
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

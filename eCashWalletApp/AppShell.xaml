@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="eCashWalletApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:eCashWalletApp"
+    Shell.FlyoutBehavior="Disabled">
+   
+    <ShellContent
+        Title="CashTab"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <TabBar Title="Menu">
+        <Tab Title="HOME"
+             Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}" 
+                          Route="DashboardPage"/>
+        </Tab>
+        <Tab Title="Cats"
+             Icon="dotnet_bot.png">
+            <ShellContent ContentTemplate="{DataTemplate local:Tab1}"
+                          Route="Tab1"/>
+        </Tab>
+        <Tab Title="Dogs"
+             Icon="dotnet_bot.png">
+            
+            <ShellContent ContentTemplate="{DataTemplate local:Tab2}" 
+                          Route="Tab2">
+            </ShellContent>
+        </Tab>
+    </TabBar>
+</Shell>

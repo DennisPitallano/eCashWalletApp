@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eCashWalletApp.DashboardPage"
+             Title="DashboardPage"
+             xmlns:viewmodel="clr-namespace:eCashWalletApp.ViewModels"
+             x:DataType="viewmodel:DashboardViewModel">
+    <Shell.TitleView>
+        <Grid Margin="0,0,20,0" ColumnDefinitions="*,30">
+            <Label
+                BackgroundColor="Transparent"
+                Text="Good morning Oragon!"
+                TextColor="White"
+                FontSize="15"
+                FontFamily="MontserratBold"
+                VerticalOptions="Center" />
+            <Border Grid.Column="1" WidthRequest="35" HeightRequest="35"
+                    Stroke="{AppThemeBinding Light={StaticResource WhiteBrush}}"
+                    StrokeShape="RoundRectangle 50" StrokeThickness="1">
+                <Image
+                    HeightRequest="34"
+                    HorizontalOptions="Center"
+                    Source="pita.png"
+                    VerticalOptions="Center"
+                    WidthRequest="34" />
+            </Border>
+        </Grid>
+    </Shell.TitleView>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label
+                Text="Welcome to .NET MAUI!"
+                VerticalOptions="Center" TextColor="White"
+                HorizontalOptions="Center" />
+
+            <Grid RowDefinitions="100, Auto, *"
+                  ColumnDefinitions=".75*, .25*"
+                  Padding="10"
+                  RowSpacing="10"
+                  ColumnSpacing="10">
+
+                <Image Grid.ColumnSpan="2"
+                       Source="dotnet_bot.png"
+                       BackgroundColor="Transparent" />
+
+                <CollectionView
+                    Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Items}"
+                    SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type x:String}">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            Text="Delete"
+                                            BackgroundColor="Red"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=DeleteCommand}"
+                                            CommandParameter="{Binding .}">
+                                        </SwipeItem>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <!--<Image Aspect="AspectFit"/>-->
+                                <Grid Padding="0,5" HeightRequest="130">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=TapCommand}"
+                                            CommandParameter="{Binding .}">
+                                        </TapGestureRecognizer>
+                                    </Grid.GestureRecognizers>
+                                    <Border
+                                        Stroke="{AppThemeBinding Light={StaticResource Tertiary}}"
+                                        StrokeShape="RoundRectangle 10" StrokeThickness="0">
+                                        <Image Source="bg_two.png" Aspect="AspectFill"></Image>
+                                    </Border>
+                                    <Label TextColor="Wheat" Text="{Binding .}"></Label>
+                                    <!--<Frame BackgroundColor="Transparent" CornerRadius="10"
+                                           HeightRequest="100">
+                                        <Frame.Shadow>
+                                            <Shadow
+                                                Offset="8,8"
+                                                Radius="10"
+                                                Opacity=".20"
+                                                Brush="{AppThemeBinding Light={StaticResource Tertiary}}">
+                                            </Shadow>
+                                        </Frame.Shadow>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=TapCommand}"
+                                                CommandParameter="{Binding .}">
+                                            </TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                        <Label TextColor="Wheat" Text="{Binding .}"></Label>
+                                    </Frame>-->
+                                </Grid>
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+            <!--<Frame Margin="10"
+                   BorderColor="Black"
+                   CornerRadius="50"
+                   HeightRequest="60"
+                   WidthRequest="60"
+                   IsClippedToBounds="True"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+
+            </Frame>-->
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

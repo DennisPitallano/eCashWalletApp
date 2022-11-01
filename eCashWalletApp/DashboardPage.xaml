@@ -147,7 +147,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
             <Frame Margin="10,0,10,0"
-                   BorderColor="Black"
+                   BorderColor="{StaticResource Tertiary}"
                    CornerRadius="15"
                    IsClippedToBounds="True"
                    HorizontalOptions="Center"

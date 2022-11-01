@@ -11,22 +11,33 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
-    <TabBar Title="Menu">
-        <Tab Title="HOME"
-             Icon="home.png">
+    <TabBar>
+        <Tab x:Name="Home"
+             Title="HOME"  Icon="home.png">
             <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}" 
                           Route="DashboardPage"/>
         </Tab>
-        <Tab Title="Cats"
-             Icon="dotnet_bot.png">
-            <ShellContent ContentTemplate="{DataTemplate local:Tab1}"
+        <Tab Icon="send_receive.png"
+             Title="BUY/SELL"> 
+            <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}"
                           Route="Tab1"/>
         </Tab>
-        <Tab Title="Dogs"
-             Icon="dotnet_bot.png">
-            
-            <ShellContent ContentTemplate="{DataTemplate local:Tab2}" 
+        <Tab Title="BILLS"
+            Icon="bills.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}" 
                           Route="Tab2">
+            </ShellContent>
+        </Tab>
+        <Tab Title="LOAD"
+            Icon="load.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}" 
+                          Route="Tab3">
+            </ShellContent>
+        </Tab>
+        <Tab Title="MORE"
+            Icon="more.png">
+            <ShellContent ContentTemplate="{DataTemplate local:DashboardPage}" 
+                          Route="Tab4">
             </ShellContent>
         </Tab>
     </TabBar>

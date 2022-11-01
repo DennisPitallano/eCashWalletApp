@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>eCashWalletApp</ApplicationTitle>
+		<ApplicationTitle>eCash Wallet</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.ecashwalletapp</ApplicationId>
@@ -32,7 +32,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" BackgroundColor="Transparent" Color="#152b45" BaseSize="128,128" />
@@ -55,13 +55,27 @@
 	  <None Remove="Resources\Fonts\Poppins-Bold.ttf" />
 	  <None Remove="Resources\Fonts\Poppins-Regular.ttf" />
 	  <None Remove="Resources\Fonts\Poppins-SemiBold.ttf" />
+	  <None Remove="Resources\Images\activate.svg" />
 	  <None Remove="Resources\Images\bg_one.png" />
 	  <None Remove="Resources\Images\bg_two.png" />
+	  <None Remove="Resources\Images\bills.svg" />
+	  <None Remove="Resources\Images\buy_load.svg" />
+	  <None Remove="Resources\Images\buy_sell.svg" />
 	  <None Remove="Resources\Images\cashtab.png" />
 	  <None Remove="Resources\Images\cashtab_bg.png" />
+	  <None Remove="Resources\Images\discount.svg" />
 	  <None Remove="Resources\Images\fingerprint.svg" />
+	  <None Remove="Resources\Images\forward.svg" />
+	  <None Remove="Resources\Images\grocery.svg" />
 	  <None Remove="Resources\Images\home.svg" />
+	  <None Remove="Resources\Images\load.svg" />
+	  <None Remove="Resources\Images\more.svg" />
+	  <None Remove="Resources\Images\next.svg" />
+	  <None Remove="Resources\Images\pay_bills.svg" />
 	  <None Remove="Resources\Images\pita.jpg" />
+	  <None Remove="Resources\Images\receive_money.svg" />
+	  <None Remove="Resources\Images\send_money.svg" />
+	  <None Remove="Resources\Images\send_receive.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

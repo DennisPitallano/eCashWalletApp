@@ -11,8 +11,8 @@ public partial class DashboardViewModel: ObservableObject
     {
         _items = new ObservableCollection<string>()
         {
-            "Test 1",
-            "Test 2"
+            "ORAGON SAVINGS",
+            "ORAGON PAYROLL"
         };
     }
 }

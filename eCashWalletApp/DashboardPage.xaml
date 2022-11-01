@@ -7,7 +7,7 @@
              xmlns:viewmodel="clr-namespace:eCashWalletApp.ViewModels"
              x:DataType="viewmodel:DashboardViewModel">
     <Shell.TitleView>
-        <Grid Margin="0,0,20,0" ColumnDefinitions="*,30">
+        <Grid Margin="0,0,20,0" ColumnDefinitions="*,32">
             <Label
                 BackgroundColor="Transparent"
                 Text="Good morning Oragon!"
@@ -28,87 +28,190 @@
         </Grid>
     </Shell.TitleView>
     <ScrollView>
-        <VerticalStackLayout>
-            <Label
-                Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" TextColor="White"
-                HorizontalOptions="Center" />
-
-            <Grid RowDefinitions="100, Auto, *"
-                  ColumnDefinitions=".75*, .25*"
-                  Padding="10"
-                  RowSpacing="10"
-                  ColumnSpacing="10">
-
-                <Image Grid.ColumnSpan="2"
-                       Source="dotnet_bot.png"
-                       BackgroundColor="Transparent" />
-
-                <CollectionView
-                    Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding Items}"
-                    SelectionMode="None">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type x:String}">
-                            <SwipeView>
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
-                                        <SwipeItem
-                                            Text="Delete"
-                                            BackgroundColor="Red"
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=DeleteCommand}"
-                                            CommandParameter="{Binding .}">
-                                        </SwipeItem>
-                                    </SwipeItems>
-                                </SwipeView.RightItems>
-                                <!--<Image Aspect="AspectFit"/>-->
-                                <Grid Padding="0,5" HeightRequest="130">
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=TapCommand}"
-                                            CommandParameter="{Binding .}">
-                                        </TapGestureRecognizer>
-                                    </Grid.GestureRecognizers>
-                                    <Border
-                                        Stroke="{AppThemeBinding Light={StaticResource Tertiary}}"
-                                        StrokeShape="RoundRectangle 10" StrokeThickness="0">
-                                        <Image Source="bg_two.png" Aspect="AspectFill"></Image>
-                                    </Border>
-                                    <Label TextColor="Wheat" Text="{Binding .}"></Label>
-                                    <!--<Frame BackgroundColor="Transparent" CornerRadius="10"
-                                           HeightRequest="100">
-                                        <Frame.Shadow>
-                                            <Shadow
-                                                Offset="8,8"
-                                                Radius="10"
-                                                Opacity=".20"
-                                                Brush="{AppThemeBinding Light={StaticResource Tertiary}}">
-                                            </Shadow>
-                                        </Frame.Shadow>
-                                        <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=TapCommand}"
-                                                CommandParameter="{Binding .}">
-                                            </TapGestureRecognizer>
-                                        </Frame.GestureRecognizers>
-                                        <Label TextColor="Wheat" Text="{Binding .}"></Label>
-                                    </Frame>-->
-                                </Grid>
-                            </SwipeView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+        <VerticalStackLayout Padding="10,5">
+            <Grid RowSpacing="5" Margin="0,5" Padding="5,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0"
+                       Text="MY WALLETS" FontFamily="PoppinsBold"
+                       TextColor="White"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Start" />
+                <Button
+                    Grid.Row="0" Grid.Column="1" x:Name="UsePin"
+                    Text="MANAGE" Padding="5,5" WidthRequest="100" HeightRequest="30"
+                    SemanticProperties.Hint=""
+                    BackgroundColor="{AppThemeBinding Light={StaticResource Primary}}"
+                    HorizontalOptions="End">
+                    <Button.Shadow>
+                        <Shadow Brush="{StaticResource Gray900}"
+                                Offset="0,4"
+                                Radius="4"
+                                Opacity="1">
+                        </Shadow>
+                    </Button.Shadow>
+                </Button>
             </Grid>
-
-            <!--<Frame Margin="10"
+            <CollectionView Margin="0,0,0,10"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems>
+                                    <SwipeItem
+                                        Text="Delete"
+                                        BackgroundColor="Red"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=DeleteCommand}"
+                                        CommandParameter="{Binding .}">
+                                    </SwipeItem>
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+                            <!--<Image Aspect="AspectFit"/>-->
+                            <Grid Padding="5,0" HeightRequest="120" Margin="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}},Path=TapCommand}"
+                                        CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Grid.GestureRecognizers>
+                                <Border Grid.ColumnSpan="2" Grid.RowSpan="2"
+                                        Stroke="{AppThemeBinding Light={StaticResource TertiaryBrush}}"
+                                        StrokeShape="RoundRectangle 15">
+                                    <Border.Shadow>
+                                        <Shadow
+                                            Offset="0,4"
+                                            Radius="4"
+                                            Opacity="1"
+                                            Brush="{AppThemeBinding Light={StaticResource Gray900}}">
+                                        </Shadow>
+                                    </Border.Shadow>
+                                    <Image Source="bg_two.png" Aspect="AspectFill"></Image>
+                                </Border>
+                                <Grid Grid.Row="0" Grid.Column="0" Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout>
+                                        <Label TextColor="AntiqueWhite" FontSize="16" TextTransform="Uppercase"
+                                               FontFamily="MontserratSemibold"
+                                               HorizontalOptions="Start" HorizontalTextAlignment="Center"
+                                               Text="{Binding .}">
+                                        </Label>
+                                        <Label TextColor="AntiqueWhite" FontSize="12"
+                                               HorizontalOptions="Start" HorizontalTextAlignment="Center"
+                                               Text="ecash:0x43434***">
+                                        </Label>
+                                    </StackLayout>
+                                    <ImageButton Grid.Column="1" HeightRequest="30"
+                                                 HorizontalOptions="End" BackgroundColor="Transparent"
+                                                 Source="forward.png">
+                                        <ImageButton.Shadow>
+                                            <Shadow Brush="{StaticResource Tertiary}"
+                                                    Offset="0,4"
+                                                    Radius="4"
+                                                    Opacity="1">
+                                            </Shadow>
+                                        </ImageButton.Shadow>
+                                    </ImageButton>
+                                </Grid>
+                                <StackLayout Grid.Row="1" HorizontalOptions="End" Padding="0,0,10,5">
+                                    <Label TextColor="AntiqueWhite" FontSize="10"
+                                           HorizontalOptions="End" HorizontalTextAlignment="Center"
+                                           Text="Available Balance">
+                                    </Label>
+                                    <Label TextColor="AntiqueWhite" FontSize="20" FontAttributes="Bold"
+                                           HorizontalOptions="End" HorizontalTextAlignment="Center"
+                                           Text="1,000,000.00 XEC">
+                                    </Label>  
+                                    <Label TextColor="WhiteSmoke" FontSize="10"
+                                           HorizontalOptions="End" HorizontalTextAlignment="Center"
+                                           Text="₱ 1,000,000.00">
+                                    </Label>
+                                </StackLayout>
+                            </Grid>
+                        </SwipeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Frame Margin="10,0,10,0"
                    BorderColor="Black"
-                   CornerRadius="50"
-                   HeightRequest="60"
-                   WidthRequest="60"
+                   CornerRadius="15"
                    IsClippedToBounds="True"
                    HorizontalOptions="Center"
-                   VerticalOptions="Center">
+                   VerticalOptions="Center"
+                   BackgroundColor="{StaticResource Primary}">
+                <Frame.Shadow>
+                    <Shadow
+                        Offset="0,4"
+                        Radius="4"
+                        Opacity="1"
+                        Brush="{AppThemeBinding Light={StaticResource Gray900}}">
+                    </Shadow>
+                </Frame.Shadow>
+                <Grid ColumnSpacing="10" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <!--<BoxView Color="Green" />-->
+                    <ImageButton Grid.Row="0" Grid.Column="0" HeightRequest="75" Padding="3"
+                                 Source="send_money.png">
+                    </ImageButton>
+                    <ImageButton Grid.Row="0" Grid.Column="1" HeightRequest="75" Padding="3"
+                                 Source="receive_money.png">
+                    </ImageButton>
+                    <ImageButton Grid.Row="0" Grid.Column="2" HeightRequest="75" Padding="3"
+                                 Source="pay_bills.png">
+                    </ImageButton>
+                    <ImageButton Grid.Row="0" Grid.Column="3" HeightRequest="75" Padding="3"
+                                 Source="buy_load.png">
+                    </ImageButton>
 
-            </Frame>-->
+                    <ImageButton Grid.Row="1" Grid.Column="0" HeightRequest="75" Padding="3"
+                                 Source="buy_sell.png">
+                    </ImageButton>
+                    <ImageButton Grid.Row="1" Grid.Column="1" HeightRequest="75" Padding="3"
+                                 Source="activate.png">
+                    </ImageButton>
+                    <ImageButton Grid.Row="1" Grid.Column="2" HeightRequest="75" Padding="3"
+                                 Source="grocery.png">
+                    </ImageButton>
+                    <ImageButton Grid.Row="1" Grid.Column="3" HeightRequest="75" Padding="3"
+                                 Source="discount.png">
+                    </ImageButton>
+
+                    <Label Grid.Row="2" TextColor="White" Text="VIEW ALL"
+                           HorizontalOptions="Center" HorizontalTextAlignment="End" Grid.ColumnSpan="4" Grid.Column="0" ></Label>
+                    <!--<BoxView Grid.Row="1"
+                             Grid.Column="1"
+                             Color="Purple" />
+                    <Label Grid.Row="1"
+                           Grid.Column="1"
+                           Text="Row1, Column 1"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />-->
+                </Grid>  
+            </Frame>
 
         </VerticalStackLayout>
     </ScrollView>
